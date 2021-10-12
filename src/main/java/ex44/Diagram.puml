@@ -1,0 +1,27 @@
+/*
+ *  UCF COP3330 Fall 2021 Assignment 3 Solution
+ *  Copyright 2021 Filipe Frances
+ */
+
+@startuml
+
+abstract class InputVerify
+
+InputVerify <-- Main
+Main <.. InputVerify
+
+class Main{
+    while (true)\n    *gather input
+    --
+    * calls:
+    + InputVerify()
+}
+
+class InputVerify{
+    + check()
+    * if match: return true
+    --
+    * checks for product / input match
+}
+
+@enduml

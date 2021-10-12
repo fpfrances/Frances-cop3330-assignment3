@@ -1,0 +1,56 @@
+/*
+ *  UCF COP3330 Fall 2021 Assignment 3 Solution
+ *  Copyright 2021 Filipe Frances
+ */
+@startuml
+abstract class ReadFile
+abstract class WordReplacer
+abstract class FileExport
+
+ReadFile <-- Main
+Main <.. ReadFile : \t\n\n
+WordReplacer <--- Main : \t
+Main <.. WordReplacer : \t\n\n
+FileExport <--- Main : \t
+Main <... FileExport : \t\n\n
+
+class Main{
+    + ReadFile ()
+    ..
+    + WordReplacer ()
+    ..
+    + FileExport ()
+    --
+    * print new document
+    * print file path
+}
+
+class ReadFile{
+    + read ()
+    ..
+    * read file
+    * return file input as string
+}
+
+class WordReplacer{
+    + string()
+    ..
+    * take string from ReadFile
+    * take old word and new word
+    * return replacement string
+}
+
+class FileExport{
+    + fileName()
+    ..
+    * asks for user file name
+    * calls fileGenerator ()
+    * return file name
+    --
+    + fileGenerator()
+    ..
+    * takes file string
+    * takes new file name
+    * exports file w/ new name
+}
+@enduml

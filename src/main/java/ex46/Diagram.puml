@@ -1,0 +1,70 @@
+/*
+ *  UCF COP3330 Fall 2021 Assignment 3 Solution
+ *  Copyright 2021 Filipe Frances
+ */
+@startuml
+class ReadFile
+class WordFrequency
+class CreateList
+class UniqueWords
+class FinalSort
+
+ReadFile <-- Main
+Main <.. ReadFile
+WordFrequency <-- Main
+Main <.. WordFrequency
+CreateList <-- WordFrequency
+WordFrequency <.. CreateList : \t1st
+FinalSort <-- WordFrequency
+WordFrequency <.. FinalSort : \t3rd
+UniqueWords <-- WordFrequency
+WordFrequency <... UniqueWords : 2nd
+
+class Main{
+    * Calls:
+    ..
+    + ReadFile ()
+    + WordFrequency ()
+    --
+    * Prints out final string returned
+    from WordFrequency ()
+}
+
+class ReadFile{
+    + read ()
+    ..
+    * read file
+    * return file input as string
+}
+
+class WordFrequency{
+    + contentString ()
+    + outputString ()
+    + wordFormat ()
+    + space ()
+    --
+    * Calls:
+    ..
+    + CreateList ()
+    + UniqueWords ()
+    + FinalSort ()
+}
+
+class CreateList{
+    + sort ()
+    ..
+    * returns sorted array of words
+}
+
+class UniqueWords{
+    + count ()
+    ..
+    * returns number of unique words
+}
+
+class FinalSort{
+    + stringArray ()
+    ..
+    * sorts a string array
+}
+@enduml

@@ -1,0 +1,35 @@
+/*
+ *  UCF COP3330 Fall 2021 Assignment 3 Solution
+ *  Copyright 2021 Filipe Frances
+ */
+@startuml
+abstract class WebGen
+
+Main --> WebGen
+Main <.. WebGen
+
+class Main{
+
+    * take user input
+    + WebGen()
+    --
+    * print directory
+}
+
+class WebGen{
+
++String siteName
++String author
++String path
+
++String createWebsite()
++String createJSFolder()
++String createCSSFolder()
++String createHTML()
+
+-----------------------
+
+* check for the folder
+
+}
+@enduml

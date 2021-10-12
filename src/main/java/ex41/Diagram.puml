@@ -1,0 +1,47 @@
+/*
+ *  UCF COP3330 Fall 2021 Assignment 3 Solution
+ *  Copyright 2021 Filipe Frances
+ */
+@startuml
+abstract class ReadFile
+abstract class PrintFile
+
+ReadFile <-- Main : \t\n1st
+PrintFile <-- ReadFile
+PrintFile <-- Main : \t2nd
+Main <.. PrintFile
+
+class Main{
+    * scan file
+    * create an array list
+    ..
+    + ReadFile ()
+    + PrintFile.Generator ()
+    + PrintFile.outputNames ()
+    --
+    * print output
+}
+
+class ReadFile{
+    + readNames ()
+    ..
+    * scan file
+    * store input into an array list
+    * return an array list
+    --
+    + sortInput ()
+    ..
+    * Collections.sort
+    * return input
+}
+
+class PrintFile{
+    + print ()
+    * take string
+    * write the output
+    --
+    + String Generator ()
+    * header to string
+    * append all string in array
+}
+@enduml

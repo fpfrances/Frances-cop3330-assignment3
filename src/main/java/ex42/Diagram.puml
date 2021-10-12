@@ -1,0 +1,49 @@
+/*
+ *  UCF COP3330 Fall 2021 Assignment 3 Solution
+ *  Copyright 2021 Filipe Frances
+ */
+@startuml
+abstract class ReadFile
+abstract class StringReformat
+abstract class StringGenerator
+
+ReadFile <-- Main : \t\t\n1st
+Main <-- ReadFile
+StringReformat <-- Main : \t2nd
+Main <-- StringReformat
+StringGenerator <-- Main : \t3rd
+Main <-- StringGenerator
+
+class Main{
+    * calls:
+    + ReadFile.storeData ()
+    + StringReformat.outputFormat ()
+    + StringGenerator.tableString ()
+    --
+    * compile and print output
+}
+
+class ReadFile{
+    + ReadFile ()
+    ..
+    * scan file
+    * store input into an array list
+    * return array list
+}
+
+class StringReformat{
+    + outputFormat ()
+    ..
+    * takes string
+    * makes each index table ready
+    * returns string array
+}
+
+class StringGenerator{
+    + tableString ()
+    ..
+    * adds table header
+    * adds each index into a single string
+    * returns string
+}
+@enduml
